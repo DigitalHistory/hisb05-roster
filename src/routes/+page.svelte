@@ -4,19 +4,19 @@
 
  import Flippable from '$lib/Flippable.svelte';
  let flip = false;
-data.data.push({
-   "Timestamp": "9/6/2023 18:35:21",
-   "Official Given (\"First\") Name ": "Matt",
-   "Family (\"Last\") Name ": "Price",
-   "Preferred Name (If Different)": "",
-   "Please upload a picture of yourself": "https://drive.google.com/open?id=18D4GROL4Lh3TTWg1SrqbzGVG1G2rf39n",
-   "Major": "History and Philosophy of Science",
-   "Why are you taking this class?": "I have to!!!",
-   "Superhero Name": "Titaniumbones",
-   "Origin Story": "It's secret, you'll have to wait.",
-   "Superpowers": "Falling off cliffs.",
-   "Please upload a picture of yourself in costume (if you have one)": "https://drive.google.com/open?id=1IwuBc03aKUapPWcI9eoRd1kE1fBuwCYx"
- })
+/* data.data.push({
+*    "Timestamp": "9/6/2023 18:35:21",
+*    "Official Given (\"First\") Name ": "Matt",
+*    "Family (\"Last\") Name ": "Price",
+*    "Preferred Name (If Different)": "",
+*    "Please upload a picture of yourself": "https://drive.google.com/open?id=18D4GROL4Lh3TTWg1SrqbzGVG1G2rf39n",
+*    "Major": "History and Philosophy of Science",
+*    "Why are you taking this class?": "I have to!!!",
+*    "Superhero Name": "Titaniumbones",
+*    "Origin Story": "It's secret, you'll have to wait.",
+*    "Superpowers": "Falling off cliffs.",
+*    "Please upload a picture of yourself in costume (if you have one)": "https://drive.google.com/open?id=1IwuBc03aKUapPWcI9eoRd1kE1fBuwCYx"
+*  }) */
 </script>
 
 
