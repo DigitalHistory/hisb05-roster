@@ -26,7 +26,7 @@
         <div class="placeholder"></div>
       {/if}
       </section>
-      <h2 class="name">{person["Preferred Name (If Different)"] || person["Official Given (\"First\") Name "]}</h2>
+      <h2 class="name">{person["Preferred Name (If Different)"] || person["Official Given (\"First\") Name "]} {person["Family (\"Last\") Name "]}</h2>
       <div class="story">
            <h3 class="powers">{person["Major"]}</h3>
            <p>{person["Why are you taking this class?"]}</p>
@@ -45,7 +45,7 @@
       <h2 class="name">{person["Superhero Name"]}</h2>
       <div class="story">
         <h3 class="powers">{person["Superpowers"]}</h3>
-        <p>{person["Why are you taking this class?"]}</p></div>
+        <p>{person["Origin Story"]}</p></div>
       
     </div>
   </div>
