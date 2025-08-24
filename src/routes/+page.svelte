@@ -3,6 +3,7 @@
  let { data } = $props();
 
  import Card from '$lib/Card.svelte';
+ import courseConfig from '$lib/config/course.json';
 /* data.data.push({
 *    "Timestamp": "9/6/2023 18:35:21",
 *    "Official Given (\"First\") Name ": "Matt",
@@ -20,8 +21,8 @@
 
 
 <svelte:head>
-  <title>About</title>
-  <meta name="description" content="About this app" />
+  <title>{courseConfig.courseCode} - {courseConfig.courseName}</title>
+  <meta name="description" content="{courseConfig.heroesTitle} roster for {courseConfig.courseCode} {courseConfig.term}" />
 </svelte:head>
 
 <main class="cardcontainer">
