@@ -4,13 +4,32 @@
   
   function getImageId(url) {
     if (!url) return null;
-    const match = url.match(/\?id=(.*)/);
-    return match ? match[1] : null;
+    
+    // Handle new format: https://drive.google.com/file/d/FILE_ID/view
+    const newFormatMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+    if (newFormatMatch) {
+      return newFormatMatch[1];
+    }
+    
+    // Handle old format: https://drive.google.com/open?id=FILE_ID
+    const oldFormatMatch = url.match(/\?id=([a-zA-Z0-9_-]+)/);
+    if (oldFormatMatch) {
+      return oldFormatMatch[1];
+    }
+    
+    return null;
   }
   
-  const frontImageId = getImageId(person["Please upload a picture of yourself"]);
+  // Try both fields for front image
+  const frontImageId = getImageId(person["corrected_selfie"]) || getImageId(person["Please upload a picture of yourself"]);
   const backImageId = getImageId(person["Please upload a picture of yourself in costume (if you have one)"]);
   const displayName = person["Preferred Name (If Different)"] || person["Official Given (\"First\") Name "];
+  
+  // For static deployment (GitHub Pages), use direct Google Drive URLs
+  // These work if the files are publicly shared with "Anyone with the link can view"
+  // The lh3.googleusercontent.com domain typically doesn't have CORS issues
+  const frontImageUrl = frontImageId ? `https://lh3.googleusercontent.com/d/${frontImageId}=w800` : null;
+  const backImageUrl = backImageId ? `https://lh3.googleusercontent.com/d/${backImageId}=w800` : null;
   
   function handleFlip() {
     console.log('Card clicked, flipping from', flipped, 'to', !flipped);
@@ -27,9 +46,9 @@
   <div class="card-inner">
     <div class="card-face card-front">
       <div class="card-image">
-        {#if frontImageId}
-          <img 
-            src="https://drive.google.com/uc?id={frontImageId}" 
+        {#if frontImageUrl}
+          <img
+            src={frontImageUrl}
             alt="{displayName} {person['Family (\"Last\") Name ']}"
             loading="lazy"
           />
@@ -49,9 +68,9 @@
     
     <div class="card-face card-back">
       <div class="card-image">
-        {#if backImageId}
+        {#if backImageUrl}
           <img 
-            src="https://drive.google.com/uc?id={backImageId}" 
+            src={backImageUrl}
             alt="{person['Superhero Name']} costume"
             loading="lazy"
           />
@@ -145,6 +164,23 @@
 
   .placeholder.superhero::after {
     content: "🦸";
+  }
+
+  .placeholder.loading::after {
+    display: none;
+  }
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
   }
 
   .card-content {
