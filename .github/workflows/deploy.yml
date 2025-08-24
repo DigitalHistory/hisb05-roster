@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - 2025-updates
   workflow_dispatch:
 
 permissions:
@@ -35,6 +36,7 @@ jobs:
         run: npm run build
         env:
           BASE_PATH: '/${{ github.event.repository.name }}'
+          VITE_GOOGLE_DRIVE_API_KEY: ${{ secrets.VITE_GOOGLE_DRIVE_API_KEY }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
