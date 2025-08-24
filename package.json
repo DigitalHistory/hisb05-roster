@@ -11,23 +11,25 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
-		"@fontsource/fira-mono": "^4.5.10",
-		"@neoconfetti/svelte": "^1.0.0",
-		"@sveltejs/adapter-auto": "^2.0.0",
-		"@sveltejs/kit": "^1.20.4",
-		"@types/cookie": "^0.5.1",
-		"eslint": "^8.28.0",
-		"eslint-config-prettier": "^8.5.0",
-		"eslint-plugin-svelte": "^2.30.0",
-		"prettier": "^2.8.0",
-		"prettier-plugin-svelte": "^2.10.1",
-		"svelte": "^4.0.5",
-		"svelte-check": "^3.4.3",
-		"typescript": "^5.0.0",
-		"vite": "^4.4.2"
+		"@fontsource/fira-mono": "^5.2.6",
+		"@neoconfetti/svelte": "^2.2.2",
+		"@sveltejs/adapter-auto": "^6.1.0",
+		"@sveltejs/adapter-static": "^3.0.9",
+		"@sveltejs/kit": "^2.36.2",
+		"@sveltejs/vite-plugin-svelte": "^5.1.1",
+		"@types/cookie": "^1.0.0",
+		"eslint": "^9.34.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-svelte": "^3.11.0",
+		"prettier": "^3.6.2",
+		"prettier-plugin-svelte": "^3.4.0",
+		"svelte": "^5.38.3",
+		"svelte-check": "^4.3.1",
+		"typescript": "^5.9.2",
+		"vite": "^6.0.3"
 	},
 	"type": "module",
 	"dependencies": {
-		"papaparse": "^5.4.1"
+		"papaparse": "^5.5.3"
 	}
 }

@@ -1,9 +1,9 @@
 <script>
  /** @type {import('./$types').PageData} */
- export let data;
+ let { data } = $props();
 
- import Flippable from '$lib/Flippable.svelte';
- let flip = false;
+ import Card from '$lib/Card.svelte';
+ import courseConfig from '$lib/config/course.json';
 /* data.data.push({
 *    "Timestamp": "9/6/2023 18:35:21",
 *    "Official Given (\"First\") Name ": "Matt",
@@ -21,51 +21,29 @@
 
 
 <svelte:head>
-  <title>About</title>
-  <meta name="description" content="About this app" />
+  <title>{courseConfig.courseCode} - {courseConfig.courseName}</title>
+  <meta name="description" content="{courseConfig.heroesTitle} roster for {courseConfig.courseCode} {courseConfig.term}" />
 </svelte:head>
 
 <main class="cardcontainer">
 {#each data.data as person}
-  <Flippable {flip} {person}>
-  </Flippable>
+  <Card {person} />
 {/each}
 </main>
 
 <style>
 main.cardcontainer {
-    padding: 0 2rem 0 2rem;
+    padding: 2rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-    grid-gap: 2rem;
+    gap: 2rem;
+    justify-items: center;
 }
 
-
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
-
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
+@media (max-width: 640px) {
+    main.cardcontainer {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+}
 </style>
